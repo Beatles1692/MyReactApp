@@ -1,5 +1,5 @@
-import useProduct from "../hooks/useProduct";
-import Product from "../state/product/product"
+import useProduct from "../../hooks/useProduct";
+import Product from "../../state/product/product"
 
 interface IProductItemProps
 {
