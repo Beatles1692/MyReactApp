@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as productActionCreators from './state/product/productActionCreators'
 import { State } from './state/store';
-import { render } from 'react-dom';
 
 function App() {
   const dispatch = useDispatch();
