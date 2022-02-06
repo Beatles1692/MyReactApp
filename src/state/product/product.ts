@@ -1,7 +1,14 @@
-type Product =
+import { makeAutoObservable } from "mobx";
+
+class Product
 {
-    id : number,
-    description : string
+    constructor(id: number, description : string) {
+        makeAutoObservable(this);
+        this.id = id;
+        this.description = description;
+    }
+    id : number;
+    description : string;
 }
 
 export default Product

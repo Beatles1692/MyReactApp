@@ -1,17 +1,20 @@
-import useProduct from "../../hooks/useProduct";
+import { observer } from "mobx-react-lite";
+import { useContext } from "react";
 import Product from "../../state/product/product"
+import { ProductStoreContext } from "../../state/productStore";
 
-interface IProductItemProps
-{
-    product : Product
+interface IProductItemProps {
+    product: Product
 }
-function ProductItem(props : IProductItemProps){
+function ProductItem(props: IProductItemProps) {
     const product = props.product;
-    const { removeProduct} = useProduct();
-    return (<>
+    const store = useContext(ProductStoreContext);
+    return (
+    <li key={product.id}>
         <span>{product.description}</span>
-        <button onClick={() => removeProduct(product.id) }>Remove</button>
-        </>)
+        <button onClick={() => store.removeProduct(product.id)}>Remove</button>
+    </li>
+    )
 }
 
-export default ProductItem;
+export default observer(ProductItem);
