@@ -1,20 +1,23 @@
-import { useSelector } from "react-redux";
-import { State } from "../../state/store";
+
+import { observer } from "mobx-react-lite";
+import { useContext } from "react";
+import { ProductStoreContext } from "../../state/productStore";
 import AddProductForm from "./addProductForm";
 import ProductItem from "./productItem";
 
 function ProductList() {
-  const state = useSelector((state: State) => state.product);
+  const store = useContext(ProductStoreContext);
   return (
     <div className="App">
       <AddProductForm></AddProductForm>
-      <div>
-        {state.map((product) => {
+      <ul>
+        {store.products.map((product) => {
           return <ProductItem key={product.id} product={product}></ProductItem>;
         })}
-      </div>
+      </ul>
+      <span> Count of Products : {store.count}</span>
     </div>
   );
 }
 
-export default ProductList;
+export default observer(ProductList);
